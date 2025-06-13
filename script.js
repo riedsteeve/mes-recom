@@ -14,21 +14,14 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
         document.body.style.overflow = 'visible';
-        
-        // Initialize animations after loading
         initializeAnimations();
     }, 2000);
 });
 
 // Initialize Animations
 function initializeAnimations() {
-    // Animate stat numbers
     animateStatNumbers();
-    
-    // Create particles
     createParticles();
-    
-    // Initialize intersection observer for animations
     initializeScrollAnimations();
 }
 
@@ -39,7 +32,6 @@ function animateStatNumbers() {
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
-        
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
@@ -55,7 +47,6 @@ function animateStatNumbers() {
 function createParticles() {
     const particlesContainer = document.getElementById('particles-container');
     const particleCount = 50;
-    
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -72,7 +63,6 @@ function initializeScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -81,8 +71,6 @@ function initializeScrollAnimations() {
             }
         });
     }, observerOptions);
-    
-    // Observe elements for animation
     const animatedElements = document.querySelectorAll('.product-card, .section-header, .about-content, .cta-content');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -94,21 +82,16 @@ function initializeScrollAnimations() {
 
 // Navigation Functionality
 window.addEventListener('scroll', () => {
-    // Navbar scroll effect
     if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
-    // Back to top button
     if (window.scrollY > 300) {
         backToTopBtn.classList.add('visible');
     } else {
         backToTopBtn.classList.remove('visible');
     }
-    
-    // Update active nav link
     updateActiveNavLink();
 });
 
@@ -116,12 +99,10 @@ window.addEventListener('scroll', () => {
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const scrollPos = window.scrollY + 100;
-    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        
         if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
@@ -171,20 +152,14 @@ backToTopBtn.addEventListener('click', () => {
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
-        
-        // Update active filter button
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        
-        // Filter products
         productCards.forEach(card => {
             const category = card.getAttribute('data-category');
-            
             if (filter === 'all' || category === filter) {
                 card.style.display = 'block';
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
-                
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
@@ -192,7 +167,6 @@ filterBtns.forEach(btn => {
             } else {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(-20px)';
-                
                 setTimeout(() => {
                     card.style.display = 'none';
                 }, 300);
@@ -206,7 +180,6 @@ function setGreeting() {
     const greetingElement = document.getElementById('greeting');
     const hour = new Date().getHours();
     let greeting;
-    
     if (hour < 12) {
         greeting = "Bonjour ! 👋 Ravi de vous voir ici.";
     } else if (hour < 18) {
@@ -214,7 +187,6 @@ function setGreeting() {
     } else {
         greeting = "Bonsoir ! 🌙 Ravi de vous voir ici.";
     }
-    
     if (greetingElement) {
         greetingElement.textContent = greeting;
     }
@@ -228,34 +200,29 @@ function setCurrentYear() {
     }
 }
 
-// Product Card Hover Effects
+// Product Card Hover Effects (fonctionne sur <a>)
 productCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-10px) scale(1.02)';
     });
-    
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0) scale(1)';
     });
 });
 
-// Button Click Effects
-document.querySelectorAll('button, .btn-primary, .btn-secondary, .btn-product').forEach(btn => {
+// Button Click Effects (ripple) — SANS .btn-product ni .product-card
+document.querySelectorAll('button, .btn-primary, .btn-secondary').forEach(btn => {
     btn.addEventListener('click', function(e) {
-        // Create ripple effect
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = x + 'px';
         ripple.style.top = y + 'px';
         ripple.classList.add('ripple');
-        
         this.appendChild(ripple);
-        
         setTimeout(() => {
             ripple.remove();
         }, 600);
@@ -272,7 +239,6 @@ const rippleCSS = `
     animation: ripple-animation 0.6s linear;
     pointer-events: none;
 }
-
 @keyframes ripple-animation {
     to {
         transform: scale(4);
@@ -280,7 +246,6 @@ const rippleCSS = `
     }
 }
 `;
-
 const style = document.createElement('style');
 style.textContent = rippleCSS;
 document.head.appendChild(style);
@@ -289,7 +254,6 @@ document.head.appendChild(style);
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.floating-card');
-    
     parallaxElements.forEach((element, index) => {
         const speed = 0.5 + (index * 0.1);
         const yPos = -(scrolled * speed);
@@ -310,7 +274,6 @@ function lazyLoadImages() {
             }
         });
     });
-    
     images.forEach(img => imageObserver.observe(img));
 }
 
@@ -319,8 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setGreeting();
     setCurrentYear();
     lazyLoadImages();
-    
-    // Update greeting every minute
     setInterval(setGreeting, 60000);
 });
 
@@ -339,20 +300,16 @@ function throttle(func, wait) {
 
 // Apply throttling to scroll events
 const throttledScrollHandler = throttle(() => {
-    // Navbar scroll effect
     if (window.scrollY > 100) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
-    // Back to top button
     if (window.scrollY > 300) {
         backToTopBtn.classList.add('visible');
     } else {
         backToTopBtn.classList.remove('visible');
     }
-    
     updateActiveNavLink();
 }, 16);
 
@@ -361,7 +318,6 @@ window.addEventListener('scroll', throttledScrollHandler);
 // Add keyboard navigation support
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Close mobile menu if open
         navMenu.classList.remove('active');
         navToggle.classList.remove('active');
     }
@@ -369,12 +325,10 @@ document.addEventListener('keydown', (e) => {
 
 // Add focus management for accessibility
 const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-
 function trapFocus(element) {
     const focusableContent = element.querySelectorAll(focusableElements);
     const firstFocusableElement = focusableContent[0];
     const lastFocusableElement = focusableContent[focusableContent.length - 1];
-    
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Tab') {
             if (e.shiftKey) {
