@@ -50,6 +50,19 @@ body {
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: color 0.3s;
+}
+.theme-toggle:hover {
+    color: var(--accent-color);
+}
+
 #loading-screen.hidden {
     opacity: 0;
     visibility: hidden;
