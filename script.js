@@ -18,6 +18,23 @@ window.addEventListener('load', () => {
     }, 2000);
 });
 
+const themeToggle = document.getElementById('theme-toggle');
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-theme');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+} else {
+    document.body.classList.remove('dark-theme');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+}
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    const isDark = document.body.classList.contains('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    themeToggle.innerHTML = isDark
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+});
+
 // Initialize Animations
 function initializeAnimations() {
     animateStatNumbers();
