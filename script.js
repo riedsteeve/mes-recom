@@ -1,364 +1,160 @@
-// DOM Elements
-const loadingScreen = document.getElementById('loading-screen');
-const backToTopBtn = document.getElementById('back-to-top');
-const navbar = document.querySelector('.navbar');
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const productCards = document.querySelectorAll('.product-card');
-const statNumbers = document.querySelectorAll('.stat-number');
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggleMobile = document.getElementById('themeToggleMobile');
+    const body = document.body;
 
-// Loading Screen
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        document.body.style.overflow = 'visible';
-        initializeAnimations();
-    }, 2000);
-});
+    // Check for saved theme in localStorage or default to 'light'
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+    updateThemeToggleIcon(savedTheme);
 
-const themeToggle = document.getElementById('theme-toggle');
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-theme');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-} else {
-    document.body.classList.remove('dark-theme');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-}
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeToggle.innerHTML = isDark
-        ? '<i class="fas fa-sun"></i>'
-        : '<i class="fas fa-moon"></i>';
-});
-
-// Initialize Animations
-function initializeAnimations() {
-    animateStatNumbers();
-    createParticles();
-    initializeScrollAnimations();
-}
-
-// Animate Statistics Numbers
-function animateStatNumbers() {
-    statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            stat.textContent = Math.floor(current);
-        }, 16);
-    });
-}
-
-// Create Floating Particles
-function createParticles() {
-    const particlesContainer = document.getElementById('particles-container');
-    const particleCount = 50;
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 6 + 's';
-        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        particlesContainer.appendChild(particle);
+    function toggleTheme() {
+        let currentTheme = body.getAttribute('data-theme');
+        let newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeToggleIcon(newTheme);
     }
-}
 
-// Scroll Animations with Intersection Observer
-function initializeScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    const animatedElements = document.querySelectorAll('.product-card, .section-header, .about-content, .cta-content');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-}
-
-// Navigation Functionality
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    function updateThemeToggleIcon(theme) {
+        const iconClass = theme === 'light' ? 'fa-moon' : 'fa-sun';
+        themeToggle.querySelector('i').className = `fas ${iconClass}`;
+        themeToggleMobile.querySelector('i').className = `fas ${iconClass}`;
     }
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
-    updateActiveNavLink();
-});
 
-// Update Active Navigation Link
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.scrollY + 100;
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-}
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggleMobile.addEventListener('click', toggleTheme);
 
-// Mobile Navigation Toggle
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
 
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    });
-});
-
-// Smooth Scrolling
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        const offsetTop = section.offsetTop - 80;
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
-
-// Back to Top Button
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Product Filter Functionality
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        productCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            if (filter === 'all' || category === filter) {
-                card.style.display = 'block';
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 100);
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(-20px)';
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
-            }
-        });
-    });
-});
-
-// Dynamic Greeting
-function setGreeting() {
+    // 2. Dynamic Greeting in Hero Section
     const greetingElement = document.getElementById('greeting');
-    const hour = new Date().getHours();
-    let greeting;
-    if (hour < 12) {
-        greeting = "Bonjour ! 👋 Ravi de vous voir ici.";
-    } else if (hour < 18) {
-        greeting = "Bon après-midi ! ☀️ Ravi de vous voir ici.";
-    } else {
-        greeting = "Bonsoir ! 🌙 Ravi de vous voir ici.";
-    }
     if (greetingElement) {
+        const hour = new Date().getHours();
+        let greeting;
+
+        if (hour < 12) {
+            greeting = "Bonjour, explorateur tech !";
+        } else if (hour < 18) {
+            greeting = "Bon après-midi, passionné de tech !";
+        } else {
+            greeting = "Bonsoir, amateur de gadgets !";
+        }
         greetingElement.textContent = greeting;
     }
-}
 
-// Set current year in footer
-function setCurrentYear() {
-    const yearElement = document.getElementById('current-year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
+    // 3. Smooth Scroll for Navigation & Active Links
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    function activateNavLink() {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100; // Offset for fixed navbar
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.href.includes(current)) {
+                link.classList.add('active');
+            }
+        });
     }
-}
 
-// Product Card Hover Effects (fonctionne sur <a>)
-productCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) scale(1)';
-    });
-});
+    // Add scroll event listener to activate nav links
+    window.addEventListener('scroll', activateNavLink);
 
-// Button Click Effects (ripple) — SANS .btn-product ni .product-card
-document.querySelectorAll('button, .btn-primary, .btn-secondary').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
-        this.appendChild(ripple);
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
+    // Smooth scroll for nav links and hero button
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href').substring(1);
+            scrollToSection(targetId);
 
-// Add ripple CSS
-const rippleCSS = `
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(0);
-    animation: ripple-animation 0.6s linear;
-    pointer-events: none;
-}
-@keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-`;
-const style = document.createElement('style');
-style.textContent = rippleCSS;
-document.head.appendChild(style);
-
-// Parallax Effect for Hero Section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.floating-card');
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.5 + (index * 0.1);
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
-    });
-});
-
-// Lazy Loading for Images (if any are added later)
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
+            // Close mobile menu if open
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.querySelector('i').className = 'fas fa-bars';
             }
         });
     });
-    images.forEach(img => imageObserver.observe(img));
-}
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    setGreeting();
-    setCurrentYear();
-    lazyLoadImages();
-    setInterval(setGreeting, 60000);
-});
-
-// Performance optimization: Throttle scroll events
-function throttle(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+    // Global function for scrolling to a section (used by hero button and footer)
+    window.scrollToSection = function(id) {
+        const targetSection = document.getElementById(id);
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 70, // Adjust offset as needed
+                behavior: 'smooth'
+            });
+        }
     };
-}
 
-// Apply throttling to scroll events
-const throttledScrollHandler = throttle(() => {
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
-    }
-    updateActiveNavLink();
-}, 16);
 
-window.addEventListener('scroll', throttledScrollHandler);
+    // 4. Mobile Navigation Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-// Add keyboard navigation support
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    }
-});
-
-// Add focus management for accessibility
-const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-function trapFocus(element) {
-    const focusableContent = element.querySelectorAll(focusableElements);
-    const firstFocusableElement = focusableContent[0];
-    const lastFocusableElement = focusableContent[focusableContent.length - 1];
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstFocusableElement) {
-                    lastFocusableElement.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === lastFocusableElement) {
-                    firstFocusableElement.focus();
-                    e.preventDefault();
-                }
-            }
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = navToggle.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.className = 'fas fa-times'; // Change to 'x' icon
+        } else {
+            icon.className = 'fas fa-bars'; // Change back to hamburger icon
         }
     });
-}
+
+    // 5. Product Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productsGrid = document.getElementById('productsGrid');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+
+            productCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
+                    card.style.display = 'flex'; // Show card
+                } else {
+                    card.style.display = 'none'; // Hide card
+                }
+            });
+        });
+    });
+
+    // 6. Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) { // Show button after scrolling down 300px
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // 7. Dynamic Year in Footer
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+});
