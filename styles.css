@@ -254,6 +254,37 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Responsive NAVIGATION pour mobile */
+@media (max-width: 900px) {
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 64px; /* adapte selon la hauteur de ta navbar */
+    right: 2rem;
+    background: rgba(20, 20, 20, 0.98);
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    min-width: 180px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    z-index: 1200;
+    animation: menuFadeIn 0.25s;
+  }
+  .nav-menu.active {
+    display: flex;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}
+
+/* Petite animation d’apparition du menu (optionnel) */
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
