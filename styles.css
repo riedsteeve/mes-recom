@@ -1017,6 +1017,7 @@ body {
     .cta-actions {
         flex-direction: column;
         align-items: center;
+        list-style:none;
     }
     
     .footer-links {
