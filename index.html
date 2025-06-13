@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Recos Tech – Ried Steeve</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-container"></div>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <div class="loading-text">Chargement...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-microchip"></i>
+                <span>Recos Tech</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Accueil</a>
+                <a href="#products" class="nav-link">Produits</a>
+                <a href="#about" class="nav-link">À propos</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Recommandations Premium</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Recos Tech</span>
+                    <span class="title-line gradient-text">Ried Steeve</span>
+                </h1>
+                <p id="greeting" class="hero-greeting"></p>
+                <p class="hero-description">
+                    Bienvenue sur ma sélection personnelle ! Passionné par la tech, je vous partage ici mes 
+                    <span class="highlight">découvertes et mes recommandations</span> 
+                    de produits Amazon. Que vous soyez un pro ou un simple curieux, vous trouverez des gadgets 
+                    utiles et performants qui ont su me convaincre.
+                </p>
+                 
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToSection('products')">
+                        <span>Découvrir mes recos</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-play"></i>
+                        <span>Voir la vidéo</span>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-smartphone"></i>
+                    </div>
+                    <div class="floating-card card-4">
+                        <i class="fas fa-mouse"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products-section">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Sélection Premium</span>
+                </div>
+                <h2 class="section-title">Mes Indispensables</h2>
+                <p class="section-description">
+                    Une sélection rigoureuse de produits tech que j'utilise au quotidien
+                </p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" data-category="storage">
+                    <div class="product-icon">
+                        <i class="fas fa-usb"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Clé USB 3.1 Ultra-Rapide</h3>
+                        <p class="product-description">Indispensable pour vos transferts de fichiers volumineux</p>
+                        <div class="product-features">
+                            <span class="feature-tag">USB 3.1</span>
+                            <span class="feature-tag">128GB</span>
+                            <span class="feature-tag">Rapide</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">5.0 (127 avis)</span>
+                        </div>
+                    </div>
+                    <div class="product-action">
+                        <button class="btn-product">
+                            <span>Voir sur Amazon</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="accessories">
+                    <div class="product-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Support Téléphone Aluminium</h3>
+                        <p class="product-description">Élégance et stabilité pour votre bureau</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Aluminium</span>
+                            <span class="feature-tag">Ajustable</span>
+                            <span class="feature-tag">Premium</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.8 (89 avis)</span>
+                        </div>
+                    </div>
+                    <div class="product-action">
+                        <button class="btn-product">
+                            <span>Voir sur Amazon</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="audio">
+                    <div class="product-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Casque Bluetooth ANC</h3>
+                        <p class="product-description">Plongez dans votre musique sans distraction</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Bluetooth 5.0</span>
+                            <span class="feature-tag">ANC</span>
+                            <span class="feature-tag">30h</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.9 (234 avis)</span>
+                        </div>
+                    </div>
+                    <div class="product-action">
+                        <button class="btn-product">
+                            <span>Voir sur Amazon</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="peripherals">
+                    <div class="product-icon">
+                        <i class="fas fa-mouse"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Souris Ergonomique Sans Fil</h3>
+                        <p class="product-description">Confort et précision pour des heures de travail</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Ergonomique</span>
+                            <span class="feature-tag">Sans fil</span>
+                            <span class="feature-tag">Gaming</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.7 (156 avis)</span>
+                        </div>
+                    </div>
+                    <div class="product-action">
+                        <button class="btn-product">
+                            <span>Voir sur Amazon</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="network">
+                    <div class="product-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Répéteur Wi-Fi Mesh</h3>
+                        <p class="product-description">Dites adieu aux zones mortes de votre réseau</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Wi-Fi 6</span>
+                            <span class="feature-tag">Mesh</span>
+                            <span class="feature-tag">Tri-band</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.8 (198 avis)</span>
+                        </div>
+                    </div>
+                    <div class="product-action">
+                        <button class="btn-product">
+                            <span>Voir sur Amazon</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="smart">
+                    <div class="product-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Assistant Vocal Intelligent</h3>
+                        <p class="product-description">Contrôlez votre maison connectée par la voix</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Alexa</span>
+                            <span class="feature-tag">Smart Home</span>
+                            <span class="feature-tag">Hub</span>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.6 (312 avis)</span>
+                        </div>
+                    </div>
+                    <div class="product-action">
+                        <button class="btn-product">
+                            <span>Voir sur Amazon</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i>
+                    <span>Tous</span>
+                </button>
+                <button class="filter-btn" data-filter="storage">
+                    <i class="fas fa-hdd"></i>
+                    <span>Stockage</span>
+                </button>
+                <button class="filter-btn" data-filter="audio">
+                    <i class="fas fa-volume-up"></i>
+                    <span>Audio</span>
+                </button>
+                <button class="filter-btn" data-filter="accessories">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Accessoires</span>
+                </button>
+                <button class="filter-btn" data-filter="network">
+                    <i class="fas fa-wifi"></i>
+                    <span>Réseau</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-badge">
+                        <i class="fas fa-user"></i>
+                        <span>À propos</span>
+                    </div>
+                    <h2 class="section-title">Pourquoi me faire confiance ?</h2>
+                    <p class="about-description">
+                        Avec plus de 10 ans d'expérience dans le domaine de la technologie, 
+                        je teste personnellement chaque produit avant de le recommander. 
+                        Ma passion pour l'innovation et mon expertise technique me permettent 
+                        de vous guider vers les meilleurs choix.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Tests approfondis</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expertise technique</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Recommandations honnêtes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Ried Steeve</h3>
+                        <p>Expert Tech & Testeur</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Prêt à découvrir mes recommandations ?</h2>
+                <p class="cta-description">
+                    Rejoignez des milliers de personnes qui font confiance à mes conseils tech
+                </p>
+                <div class="cta-actions">
+                    <button class="btn-cta-primary">
+                        <span>Voir toutes mes recos</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-cta-secondary">
+                        <i class="fas fa-bell"></i>
+                        <span>Recevoir les nouveautés</span>
+                    </button>
+                </div>
+            </div>
+            <div class="cta-visual">
+                <div class="floating-elements">
+                    <div class="floating-element element-1">💻</div>
+                    <div class="floating-element element-2">🎧</div>
+                    <div class="floating-element element-3">📱</div>
+                    <div class="floating-element element-4">⌚</div>
+                    <div class="floating-element element-5">🖱️</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-microchip"></i>
+                        <span>Recos Tech</span>
+                    </div>
+                    <p class="footer-description">
+                        Vos recommandations tech de confiance depuis 2020
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <a href="#home">Accueil</a>
+                        <a href="#products">Produits</a>
+                        <a href="#about">À propos</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Légal</h4>
+                        <a href="#">Mentions légales</a>
+                        <a href="#">Politique de confidentialité</a>
+                        <a href="#">CGU</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <a href="mailto:contact@recostech.fr">contact@recostech.fr</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    Page créée dans le cadre du programme d'affiliation Amazon.<br>
+                    © <span id="current-year"></span> – Ried Steeve. Tous droits réservés.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" title="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
