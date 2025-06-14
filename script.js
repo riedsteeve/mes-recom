@@ -158,3 +158,71 @@ document.addEventListener('DOMContentLoaded', () => {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 });
+
+
+ document.addEventListener('DOMContentLoaded', function() {
+    const greetingElement = document.getElementById('greeting');
+    const now = new Date();
+    const hour = now.getHours();
+    let greetingMessage = "";
+
+    if (hour >= 5 && hour < 12) {
+        greetingMessage = "Bonjour !";
+    } else if (hour >= 12 && hour < 18) {
+        greetingMessage = "Bon après-midi !";
+    } else {
+        greetingMessage = "Bonsoir !";
+    }
+    greetingElement.textContent = greetingMessage;
+});
+
+
+// Dynamic Greeting for Hero Section
+document.addEventListener('DOMContentLoaded', function() {
+    const greetingElement = document.getElementById('greeting');
+    const now = new Date();
+    const hour = now.getHours();
+    let greetingMessage = "";
+
+    if (hour >= 5 && hour < 12) {
+        greetingMessage = "Bonjour !";
+    } else if (hour >= 12 && hour < 18) {
+        greetingMessage = "Bon après-midi !";
+    } else {
+        greetingMessage = "Bonsoir !";
+    }
+    greetingElement.textContent = greetingMessage + " Prêt à découvrir les meilleures innovations ?";
+});
+
+// Update current year in footer
+document.addEventListener('DOMContentLoaded', function() {
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+});
+
+// Product Search Functionality (example, requires more robust implementation)
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('productSearch');
+    const productsGrid = document.getElementById('productsGrid');
+    const productCards = productsGrid.querySelectorAll('.product-card');
+
+    searchInput.addEventListener('keyup', function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        productCards.forEach(card => {
+            const title = card.querySelector('.product-title').textContent.toLowerCase();
+            const description = card.querySelector('.product-description').textContent.toLowerCase();
+            const features = card.querySelector('.product-features').textContent.toLowerCase();
+
+            if (title.includes(searchTerm) || description.includes(searchTerm) || features.includes(searchTerm)) {
+                card.style.display = ''; // Show the card
+            } else {
+                card.style.display = 'none'; // Hide the card
+            }
+        });
+    });
+});
+
+// Assuming you already have filter buttons working, you might need to adjust their data-filter values
+// to match the new categories like 'gaming', 'smart-home', 'laptops'.
