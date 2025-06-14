@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Coups de Cœur Quotidien - Ried Steeve</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="produit.css">
+</head>
+<body data-theme="light">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-box-open"></i>
+                <span>Mes Coups de Cœur Quotidien</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Accueil Tech</a>
+                <a href="autreProduits.html" class="nav-link active">Produits Quotidiens</a>
+                <a href="#about" class="nav-link">À propos</a>
+                <button class="theme-toggle" id="themeToggle" title="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggleMobile" title="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>Sélection Personnelle</span>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line">Mes Essentiels</span>
+                <span class="title-line gradient-text">Pour le Quotidien</span>
+            </h1>
+
+            <p id="greeting" class="hero-greeting">Bonjour et bienvenue !</p>
+
+            <p class="hero-description">
+                Au-delà de la technologie, je vous partage ici ma sélection de <b>du quotidien</b> qui m'ont vraiment facilité la vie ou apporté un plus.
+                 Que ce soient des astuces pour la maison, des objets pratiques ou des découvertes inspirantes, chaque article est choisi pour son <b>utilité</b>, sa <b>qualité</b> et son <b>apport réel</b>. Laissez-vous guider par mes expériences pour améliorer votre quotidien !
+            </p>
+
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="scrollToSection('products')">
+                    <span>Découvrir mes recommandations</span>
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+                <a href="#about" class="btn-secondary" title="En savoir plus sur moi">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="floating-cards">
+                <div class="floating-card card-1">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-brush"></i>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="floating-card card-4">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="floating-card card-5">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="floating-card card-6">
+                    <i class="fas fa-child"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="section-header">
+            <div class="section-badge">
+                <i class="fas fa-box-open"></i>
+                <span>Mes Découvertes</span>
+            </div>
+            <h2 class="section-title">Produits Pratiques pour Chaque Jour</h2>
+            <p class="section-description">
+                Voici une sélection de produits variés qui ont prouvé leur valeur dans mon quotidien. Des objets utiles aux petits plaisirs, il y en a pour tous les besoins.
+            </p>
+            <div class="product-search-bar">
+                <input type="text" id="productSearch" placeholder="Rechercher un produit..." aria-label="Rechercher des produits">
+                <button id="searchButton" aria-label="Lancer la recherche"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <div class="product-card" data-category="maison">
+                <div class="product-icon">
+                    <i class="fas fa-spray-can"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Nettoyant Multi-surfaces Écologique</h3>
+                    <p class="product-description">Un produit de nettoyage efficace et respectueux de l'environnement pour toutes vos surfaces.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Biodégradable</span>
+                        <span class="feature-tag">Sans traces</span>
+                        <span class="feature-tag">Parfum frais</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-text">4.8 (250 avis)</span>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <a href="https://amzn.to/4l47PSb" target="_blank" rel="noopener noreferrer" class="btn-product">
+                        <span>Voir sur Amazon</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="cuisine">
+                <div class="product-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <div class="product-content">
+                    <h3 class="product-title">Ensemble de Couteaux de Cuisine Antiadhésifs</h3>
+                    <p class="product-description">Des couteaux aiguisés et faciles à nettoyer pour une découpe parfaite de tous vos aliments.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Acier inoxydable</span>
+                        <span class="feature-tag">Ergonomique</span>
+                        <span class="feature-tag">6 pièces</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-text">4.9 (400 avis)</span>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <a href="https://amzn.to/43ZI0vx" target="_blank" rel="noopener noreferrer" class="btn-product">
+                        <span>Voir sur Amazon</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="cuisine">
+                <div class="product-icon">
+                    <i class="fa-solid fa-wind"></i>
+                </div>
+
+                <div class="product-content">
+                    <h3 class="product-title">Mini Ventilateur à Main USB</h3>
+                    <p class="product-description">Le ventilateur personne portable dispose de 5 pales
+                         de ventilateur hélicoïdales conçues pour simuler la sortie d'un moteur d'avion.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Alimenté par batterie</span>
+                        <span class="feature-tag">180 Watts</span>
+                        <span class="feature-tag">Portatif</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-text">4.6 sur 5 (4293 avis)</span>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <a href="https://amzn.to/3HJoYCh" target="_blank" rel="noopener noreferrer" class="btn-product">
+                        <span>Voir sur Amazon</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+               <div class="product-card" data-category="cuisine">
+                <div class="product-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <div class="product-content">
+                    <h3 class="product-title">Chargeur USB C</h3>
+                    <p class="product-description">LumFocus 40W chargeur usb c rapide (Double ports USB C + Double ports USB A) peut
+                         charger rapidement 4 appareils simultanément jusqu'à 40W.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Téléphone cellulaire</span>
+                        <span class="feature-tag">12 Volts</span>
+                        <span class="feature-tag">multi-appareils</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-text">4.5 sur 5 (136 avis)</span>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <a href="https://amzn.to/45qmcvK" target="_blank" rel="noopener noreferrer" class="btn-product">
+                        <span>Voir sur Amazon</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="jardin">
+                <div class="product-icon">
+                    <i class="fa-solid fa-mitten"></i>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Gants de Jardinage Renforcés</h3>
+                    <p class="product-description">Protégez vos mains tout en jardinant avec ces gants résistants et confortables.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">Anti-crevaison</span>
+                        <span class="feature-tag">Respirant</span>
+                        <span class="feature-tag">Taille unique</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-text">4.6 sur 5 (185 avis)</span>
+                    </div>
+                </div>
+                <div class="product-action">
+                    <a href="https://amzn.to/3HHo2yj" target="_blank" rel="noopener noreferrer" class="btn-product">
+                        <span>Voir sur Amazon</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            </div>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th"></i>
+                <span>Tous les produits</span>
+            </button>
+            <button class="filter-btn" data-filter="maison">
+                <i class="fas fa-home"></i>
+                <span>Maison</span>
+            </button>
+            <button class="filter-btn" data-filter="cuisine">
+                <i class="fas fa-utensils"></i>
+                <span>Cuisine</span>
+            </button>
+            <button class="filter-btn" data-filter="bien-etre">
+                <i class="fas fa-spa"></i>
+                <span>Bien-être</span>
+            </button>
+            <button class="filter-btn" data-filter="loisirs">
+                <i class="fas fa-gamepad"></i>
+                <span>Loisirs</span>
+            </button>
+            <button class="filter-btn" data-filter="jardin">
+                <i class="fas fa-seedling"></i>
+                <span>Jardin</span>
+            </button>
+            <button class="filter-btn" data-filter="enfants">
+                <i class="fas fa-child"></i>
+                <span>Enfants</span>
+            </button>
+            <button class="filter-btn" data-filter="animaux">
+                <i class="fas fa-paw"></i>
+                <span>Animaux</span>
+            </button>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <div class="section-badge">
+                    <i class="fas fa-user"></i>
+                    <span>À propos de moi</span>
+                </div>
+                <h2 class="section-title">Pourquoi faire confiance aux Recos de Steeve ?</h2>
+
+                <p class="section-description">
+                    Salut, c'est Steeve ! Passionné par la recherche des meilleurs produits, qu'ils soient tech ou pour le quotidien, chaque recommandation est le fruit d'une <b>analyse rigoureuse et d'un test personnel</b>. Mon but est simple : vous aider à faire les meilleurs choix pour améliorer votre vie de tous les jours, sans vous perdre dans la multitude d'offres.
+                </p>
+
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><b>Tests Personnels :<b> Chaque produit est essayé et validé par mes soins.</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><b>Sélection Qualité :</b> Je ne recommande que ce qui vaut vraiment le coup.</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><b>Avis Indépendants :</b> Mes recommandations sont honnêtes et sans compromis.</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><b>Utilité Garantie :</b> Je privilégie les produits qui apportent une vraie valeur ajoutée.</span>
+                    </div>
+                </div>
+                <div class="about-cta">
+                    <button class="btn-primary" onclick="scrollToSection('products')">
+                        <span>Voir ma collection</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="about-visual">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Ried Steeve</h3>
+                    <p>Expert en découvertes & Testeur Passionné</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Mes Recos</span>
+                </div>
+                <p class="footer-description">
+                    Votre guide de confiance pour des <b>recommandations de produits</b> variées, sélectionnées avec passion et expertise.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Navigation Rapide</h4>
+                    <a href="index.html">Accueil Tech</a>
+                    <a href="autreProduits.html">Produits Quotidiens</a>
+                    <a href="#about">À propos</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact & Réseaux</h4>
+                    <a href="mailto:Playtogeterwithus@outlook.com">Playtogeterwithus@outlook.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                 © <span id="current-year"></span> – Ried Steeve. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="scri.js"></script>
+</body>
+</html>
