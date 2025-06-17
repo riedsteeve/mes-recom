@@ -1006,6 +1006,7 @@ body[data-theme="dark"] .product-search-bar input[type="text"]:focus {
 
 #newsletter-form input:focus,
 #newsletter-form textarea:focus {
+  border: solid black 2px;
     border-color: var(--color-primary-dark);
     box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3);
     outline: none;
