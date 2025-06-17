@@ -1,3 +1,281 @@
+:root {
+    /* Couleurs Primaires - Jaune, orange, ensoleillées */
+    --color-primary: #FFD25E; /* Jaune soleil */
+    --color-primary-light: #FFECA3; /* Jaune très clair */
+    --color-primary-dark: #FFA700; /* Orange vif pour les hover et accents */
+    --color-primary-rgb: 255, 210, 94; /* Version RGB de --color-primary pour les ombres */
+
+    /* Dégradé estival principal */
+    --gradient-summer: linear-gradient(to right, #FFD25E, #FF9900); /* Jaune vers orange */
+    --gradient-summer-dark: linear-gradient(to right, #FFA700, #FF6600); /* Orange vers rouge-orange */
+
+    /* Couleurs de Texte - Douces et lisibles */
+    --color-text-primary: #4A4A4A; /* Gris foncé doux */
+    --color-text-secondary: #7A7A7A; /* Gris moyen pour les descriptions */
+    --color-white: #FFFFFF; /* Blanc pur */
+    --color-black: #2C2C2C; /* Noir doux pour les éléments sombres */
+
+    /* Couleurs de Fond - Lumineuses et aérées */
+    --color-background: #FFF8E1; /* Crème très clair, rappel sable */
+    --color-background-card: #FFFFFF; /* Blanc pur pour les cartes */
+
+    /* Couleurs de Bordure - Subtiles et lumineuses */
+    --color-border: #F0E6D2; /* Beige clair pour les bordures */
+
+    /* Ombres - Légères et organiques */
+    --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-large: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    /* --- Couleurs Mode Sombre (plus profondes et chaudes) --- */
+    --color-dark-background: #2C2C2C; /* Noir doux */
+    --color-dark-background-card: #3A3A3A; /* Gris foncé pour les cartes */
+    --color-dark-text-primary: #F5F5F5; /* Blanc cassé */
+    --color-dark-text-secondary: #B0B0B0; /* Gris clair */
+    --color-dark-border: #555555; /* Bordure foncée */
+    --color-dark-element: #404040; /* Couleur pour certains éléments en mode sombre */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3 {
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+b {
+    font-weight: 600;
+}
+
+.gradient-text {
+    background: var(--gradient-summer);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: var(--gradient-summer); /* Utilisation du dégradé */
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-medium);
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: var(--gradient-summer-dark); /* Dégradé plus intense au survol */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-background-card);
+    color: var(--color-text-secondary);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-small);
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border: 1px solid var(--color-primary);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+}
+
+.navbar {
+    width: 100%;
+    background-color: var(--color-background-card);
+    box-shadow: var(--shadow-small);
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary-dark); /* Plus d'impact pour la marque */
+}
+
+.nav-brand i {
+    font-size: 1.6rem;
+    color: var(--color-primary);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-summer); /* Dégradé pour la barre active */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: var(--color-primary-dark); /* Texte plus foncé pour les liens actifs/hover */
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-toggle:hover {
+    color: var(--color-primary-dark);
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-small);
+}
+
+.theme-toggle:hover {
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-medium);
+}
+
+#themeToggleMobile {
+    display: none;
+}
+
 /* Styles spécifiques pour la page de Politique de Confidentialité */
 .privacy-policy-container {
     max-width: 900px;
@@ -131,3 +409,258 @@ body[data-theme="dark"] .privacy-policy-container a:hover {
         font-size: 1.3rem;
     }
 }
+
+
+.footer {
+    background-color: var(--color-background-card);
+    padding: 60px 20px 30px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand {
+    flex: 2;
+    min-width: 250px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 15px;
+}
+
+.footer-logo i {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.footer-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+}
+
+.footer-links {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    min-width: 200px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 150px;
+}
+
+.footer-column h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+}
+
+.footer-column a,
+.footer-column button {
+    display: block;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.footer-column a:hover,
+.footer-column button:hover {
+    color: var(--color-primary-dark);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: var(--color-text-secondary);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    margin-bottom: 0;
+}
+
+.social-icons a:hover {
+    color: var(--color-primary-dark);
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    padding-top: 20px;
+    border-top: 1px dashed var(--color-border);
+    margin-top: 30px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--gradient-summer); /* Bouton retour en haut avec dégradé */
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--gradient-summer-dark); /* Dégradé plus foncé au survol */
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-large);
+}
+
+/* --- Dark Mode Styles --- */
+body[data-theme="dark"] {
+    background-color: var(--color-dark-background);
+    color: var(--color-dark-text-primary);
+}
+
+body[data-theme="dark"] .navbar,
+body[data-theme="dark"] .hero-visual .floating-card,
+body[data-theme="dark"] .product-card,
+body[data-theme="dark"] .profile-card,
+body[data-theme="dark"] .footer,
+body[data-theme="dark"] .product-search-bar input[type="text"],
+body[data-theme="dark"] .btn-secondary,
+body[data-theme="dark"] .filter-btn,
+body[data-theme="dark"] .theme-toggle {
+    background-color: var(--color-dark-background-card);
+    border-color: var(--color-dark-border);
+    color: var(--color-dark-text-primary);
+}
+
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3,
+body[data-theme="dark"] .section-title,
+body[data-theme="dark"] .hero-title,
+body[data-theme="dark"] .hero-greeting,
+body[data-theme="dark"] .product-title,
+body[data-theme="dark"] .profile-card h3,
+body[data-theme="dark"] .footer-column h4 {
+    color: var(--color-dark-text-primary);
+}
+
+body[data-theme="dark"] .nav-brand,
+body[data-theme="dark"] .nav-brand i,
+body[data-theme="dark"] .footer-logo,
+body[data-theme="dark"] .footer-logo i {
+    color: var(--color-primary-light);
+}
+
+body[data-theme="dark"] .nav-link,
+body[data-theme="dark"] .nav-toggle,
+body[data-theme="dark"] .section-description,
+body[data-theme="dark"] .hero-description,
+body[data-theme="dark"] .product-description,
+body[data-theme="dark"] .product-search-bar input[type="text"]::placeholder,
+body[data-theme="dark"] .profile-card p,
+body[data-theme="dark"] .rating-text,
+body[data-theme="dark"] .footer-description,
+body[data-theme="dark"] .footer-column a,
+body[data-theme="dark"] .footer-column button,
+body[data-theme="dark"] .social-icons a,
+body[data-theme="dark"] .footer-bottom {
+    color: var(--color-dark-text-secondary);
+}
+
+body[data-theme="dark"] .nav-link.active,
+body[data-theme="dark"] .nav-link:hover {
+    color: var(--color-primary-light); /* Lien actif/hover en mode sombre */
+}
+
+body[data-theme="dark"] .nav-link::after {
+    background: var(--gradient-summer-dark); /* Dégradé pour le soulignement en mode sombre */
+}
+
+body[data-theme="dark"] .btn-secondary:hover,
+body[data-theme="dark"] .filter-btn:hover,
+body[data-theme="dark"] .theme-toggle:hover,
+body[data-theme="dark"] .footer-column a:hover,
+body[data-theme="dark"] .footer-column button:hover,
+body[data-theme="dark"] .social-icons a:hover {
+    color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+}
+
+body[data-theme="dark"] .section-badge,
+body[data-theme="dark"] .hero-badge,
+body[data-theme="dark"] .product-icon,
+body[data-theme="dark"] .feature-tag {
+    background-color: var(--color-dark-element); /* Utilise une couleur d'élément plus sombre */
+    color: var(--color-primary-light); /* Texte/icône en mode sombre */
+    border-color: var(--color-dark-border);
+}
+
+body[data-theme="dark"] .product-icon {
+    color: var(--color-primary); /* Garde la couleur primaire pour les icônes de produit */
+}
+
+body[data-theme="dark"] .footer-bottom {
+    border-color: var(--color-dark-border);
+}
+
+body[data-theme="dark"] .product-search-bar input[type="text"]:focus {
+    border-color: var(--color-primary-dark);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3);
+}
+
+body[data-theme="dark"] .btn-primary,
+body[data-theme="dark"] .btn-product,
+body[data-theme="dark"] .product-search-bar button,
+body[data-theme="dark"] .filter-btn.active,
+body[data-theme="dark"] .back-to-top {
+    background: var(--gradient-summer-dark); /* Utilisation du dégradé plus foncé pour les boutons principaux en mode sombre */
+}
+
+body[data-theme="dark"] .btn-primary:hover,
+body[data-theme="dark"] .btn-product:hover,
+body[data-theme="dark"] .product-search-bar button:hover,
+body[data-theme="dark"] .back-to-top:hover {
+    background: var(--gradient-summer); /* Inverse ou adapte le dégradé au survol */
+}
+
