@@ -971,7 +971,7 @@ body[data-theme="dark"] .product-search-bar input[type="text"]:focus {
 }
 
 /* Contact Form Styling */
-#contact-form {
+#newsletter-form { /* Changed from #contact-form */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -985,9 +985,9 @@ body[data-theme="dark"] .product-search-bar input[type="text"]:focus {
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#contact-form input[type="text"],
-#contact-form input[type="email"],
-#contact-form textarea {
+#newsletter-form input[type="text"],
+#newsletter-form input[type="email"],
+#newsletter-form textarea {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid var(--color-border);
@@ -998,26 +998,26 @@ body[data-theme="dark"] .product-search-bar input[type="text"]:focus {
     transition: all 0.3s ease;
 }
 
-#contact-form input::placeholder,
-#contact-form textarea::placeholder {
+#newsletter-form input::placeholder,
+#newsletter-form textarea::placeholder {
     color: var(--color-text-secondary);
     opacity: 0.8;
 }
 
-#contact-form input:focus,
-#contact-form textarea:focus {
+#newsletter-form input:focus,
+#newsletter-form textarea:focus {
     border-color: var(--color-primary-dark);
     box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3);
     outline: none;
     background-color: var(--color-background-card);
 }
 
-#contact-form textarea {
+#newsletter-form textarea {
     min-height: 120px;
     resize: vertical;
 }
 
-#contact-form button[type="submit"] {
+#newsletter-form button[type="submit"] {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1031,60 +1031,60 @@ body[data-theme="dark"] .product-search-bar input[type="text"]:focus {
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow-medium);
-    width: 100%; /* Make the button full width */
+    width: 100%;
 }
 
-#contact-form button[type="submit"]:hover {
+#newsletter-form button[type="submit"]:hover {
     background: var(--gradient-summer-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-large);
 }
 
 /* Dark Mode specific styles for the form */
-body[data-theme="dark"] #contact-form {
+body[data-theme="dark"] #newsletter-form {
     background-color: var(--color-dark-background-card);
     border-color: var(--color-dark-border);
 }
 
-body[data-theme="dark"] #contact-form input[type="text"],
-body[data-theme="dark"] #contact-form input[type="email"],
-body[data-theme="dark"] #contact-form textarea {
+body[data-theme="dark"] #newsletter-form input[type="text"],
+body[data-theme="dark"] #newsletter-form input[type="email"],
+body[data-theme="dark"] #newsletter-form textarea {
     background-color: var(--color-dark-element);
     border-color: var(--color-dark-border);
     color: var(--color-dark-text-primary);
 }
 
-body[data-theme="dark"] #contact-form input::placeholder,
-body[data-theme="dark"] #contact-form textarea::placeholder {
+body[data-theme="dark"] #newsletter-form input::placeholder,
+body[data-theme="dark"] #newsletter-form textarea::placeholder {
     color: var(--color-dark-text-secondary);
 }
 
-body[data-theme="dark"] #contact-form input:focus,
-body[data-theme="dark"] #contact-form textarea:focus {
+body[data-theme="dark"] #newsletter-form input:focus,
+body[data-theme="dark"] #newsletter-form textarea:focus {
     border-color: var(--color-primary-light);
     box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3);
     background-color: var(--color-dark-background-card);
 }
 
-body[data-theme="dark"] #contact-form button[type="submit"] {
+body[data-theme="dark"] #newsletter-form button[type="submit"] {
     background: var(--gradient-summer-dark);
 }
 
-body[data-theme="dark"] #contact-form button[type="submit"]:hover {
+body[data-theme="dark"] #newsletter-form button[type="submit"]:hover {
     background: var(--gradient-summer);
 }
 
 /* Responsive adjustments for the form */
 @media (max-width: 600px) {
-    #contact-form {
+    #newsletter-form {
         padding: 20px;
         margin: 20px auto;
     }
 
-    #contact-form input[type="text"],
-    #contact-form input[type="email"],
-    #contact-form textarea,
-    #contact-form button[type="submit"] {
+    #newsletter-form input[type="text"],
+    #newsletter-form input[type="email"],
+    #newsletter-form textarea,
+    #newsletter-form button[type="submit"] {
         font-size: 0.95rem;
         padding: 10px 12px;
     }
