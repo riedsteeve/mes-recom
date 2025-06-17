@@ -226,3 +226,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Assuming you already have filter buttons working, you might need to adjust their data-filter values
 // to match the new categories like 'gaming', 'smart-home', 'laptops'.
+
+
